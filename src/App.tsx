@@ -42,7 +42,6 @@ function App() {
 
   return (
     <div className={styles.container}>
-        {/*<img src={logo} alt="logo" />*/}
         <StepperContainer>
             {content}
         </StepperContainer>

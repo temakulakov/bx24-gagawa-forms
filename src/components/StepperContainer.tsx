@@ -11,16 +11,14 @@ import image from "static/emoji.webp";
 import logo from "static/logo.png";
 import {useRecoilValue} from "recoil";
 import {selectedTableOneAtom, selectedTableTwoAtom, userAtom} from "../store/atoms";
-import {useQuery} from "@tanstack/react-query";
 import api from "../services/user.service";
-import {CircularProgress} from "@mui/material";
 import {useEffect} from "react";
 
 const steps = ['Выберите себя из списка', 'О чем тест', 'Общекорпоративные компетенции', 'Функциональные компетенции'];
 
 interface StepperContainerProps {
     children: React.ReactNode[]; // Типизация дочерних элементов
-}
+};
 
 const StepperContainer: React.FC<StepperContainerProps> = ({ children }) => {
     const [activeStep, setActiveStep] = React.useState(0);
@@ -125,7 +123,7 @@ const StepperContainer: React.FC<StepperContainerProps> = ({ children }) => {
                 </React.Fragment>
             ) : (
                 <React.Fragment>
-                    <div className={styles.content} style={activeStep === 0 ? {} : {}}>
+                    <div className={styles.content} style={activeStep === 0 ? {justifyContent: 'flex-start'} : {justifyContent: 'center'}}>
                         {activeStep === 0 && <img width={"500px"} src={logo} alt={"Gagawa"}/>}
                         <h2 style={{fontSize: '33px', marginBottom: '30px'}}>{steps[activeStep]}</h2>
                         {children[activeStep]}
