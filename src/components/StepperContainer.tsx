@@ -31,7 +31,9 @@ const StepperContainer: React.FC<StepperContainerProps> = ({ children }) => {
     const table2 = useRecoilValue(selectedTableTwoAtom);
 
     useEffect(() => {
-        setActiveStep(prev => prev + 1);
+        if (user !== null) {
+            setActiveStep(prev => prev + 1);
+        }
     }, [user]);
 
     const switchDisble = () => {
