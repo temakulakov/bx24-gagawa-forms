@@ -8,11 +8,13 @@ import Typography from '@mui/material/Typography';
 import styles from 'styles/StepperContainer.module.scss';
 
 import image from "static/emoji.webp";
+import logo from "static/logo.png";
 import {useRecoilValue} from "recoil";
 import {selectedTableOneAtom, selectedTableTwoAtom, userAtom} from "../store/atoms";
 import {useQuery} from "@tanstack/react-query";
 import api from "../services/user.service";
 import {CircularProgress} from "@mui/material";
+import {useEffect} from "react";
 
 const steps = ['Выберите себя из списка', 'О чем тест', 'Общекорпоративные компетенции', 'Функциональные компетенции'];
 
@@ -27,6 +29,10 @@ const StepperContainer: React.FC<StepperContainerProps> = ({ children }) => {
     const user = useRecoilValue(userAtom);
     const table1 = useRecoilValue(selectedTableOneAtom);
     const table2 = useRecoilValue(selectedTableTwoAtom);
+
+    useEffect(() => {
+        setActiveStep(prev => prev + 1);
+    }, [user]);
 
     const switchDisble = () => {
         if (activeStep === 0 && user === null) return true;
@@ -117,7 +123,8 @@ const StepperContainer: React.FC<StepperContainerProps> = ({ children }) => {
                 </React.Fragment>
             ) : (
                 <React.Fragment>
-                    <div className={styles.content}>
+                    <div className={styles.content} style={activeStep === 0 ? {} : {}}>
+                        {activeStep === 0 && <img width={"500px"} src={logo} alt={"Gagawa"}/>}
                         <h2 style={{fontSize: '33px', marginBottom: '30px'}}>{steps[activeStep]}</h2>
                         {children[activeStep]}
                     </div>
