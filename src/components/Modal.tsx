@@ -85,7 +85,7 @@ const Modal: React.FC<IModalProps> = ({ theme, level, list, active, setSelectedI
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box sx={style} onMouseLeave={handleClose}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         {`${theme} - ${level}`}
                     </Typography>
