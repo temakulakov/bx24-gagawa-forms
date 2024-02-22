@@ -44,9 +44,10 @@ const StepperContainer: React.FC<StepperContainerProps> = ({ children }) => {
 
     const handleNext = () => {
         if (activeStep === steps.length - 1) {
-            // const { isPending, isError, data: users, error } = useQuery({queryKey: ['deals'], queryFn:() => api.createDeal()});
+            // const { isPending, isError, data: users, error } = useQuery({queryKey: ['deals'], queryFn:() => api.createDeal(user, table1, table2)});
             // if (isPending) return <div><CircularProgress /></div>;
             // if (error instanceof Error) return <div>An error occurred: {error.message}</div>;
+            api.createDeal(user, table1, table2);
         }
         let newSkipped = skipped;
         if (isStepSkipped(activeStep)) {

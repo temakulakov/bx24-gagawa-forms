@@ -103,12 +103,12 @@ class ApiService {
         return users;
     }
 
-    async createDeal(user: IUser, test1: number[] = [0, 0, 0, 0, 0, 0], test2: number[] = [0, 0, 0, 0, 0, 0]): Promise<any> {
+    async createDeal(user: IUser | null, test1: number[] = [0, 0, 0, 0, 0, 0], test2: number[] = [0, 0, 0, 0, 0, 0]): Promise<any> {
         await axios.post<any>(this.URL_KEY + 'crm.deal.add', {
             TYPE_ID: 1,
             CATEGORY_ID: 1,
             STAGE_ID: 'C1:NEW',
-            TITLE: `${user.NAME} ${user.LAST_NAME} прошел тест`,
+            TITLE: `${user && user.NAME} ${user && user.LAST_NAME   } прошел тест`,
             UF_CRM_1699599951990: this.UF_FIELDS[0][test1[0]],
             UF_CRM_1699599977064: this.UF_FIELDS[1][test1[1]],
             UF_CRM_1699599999778: this.UF_FIELDS[2][test1[2]],
