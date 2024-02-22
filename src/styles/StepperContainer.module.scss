@@ -1,0 +1,16 @@
+.container {
+  span .MuiStepLabel-labelContainer {
+    background: red;
+  }
+}
+
+.content {
+  min-height: 820px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  h2 {
+    margin:  10px ;
+  }
+}
